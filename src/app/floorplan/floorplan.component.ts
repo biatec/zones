@@ -24,8 +24,14 @@ export class FloorplanComponent implements OnInit {
 
     updateZones(): void {
         this.fpService.getZones().subscribe(responseFP => this.fp = responseFP);
-        for(let keys in this.fp) {
-            this.zoneClass[keys] = this.fp[keys] ? 'zone-occupied' : 'zone-free';
+        console.log(this.fp);
+        for(let camera in this.fp['cameras']) {
+            for(let zone in this.fp['cameras'][camera]) {
+                let camid = camera+zone;
+                camid = camid.replace(/\"/g,"");
+                camid = camid.replace(' ', '');
+                this.zoneClass[camid] = this.fp['cameras'][camera][zone] ? 'zone-occupied' : 'zone-free';
+            }
         }
     }
 
