@@ -24,7 +24,6 @@ export class FloorplanComponent implements OnInit {
 
     updateZones(): void {
         this.fpService.getZones().subscribe(responseFP => this.fp = responseFP);
-        console.log(this.fp);
         for(let camera in this.fp['cameras']) {
             for(let zone in this.fp['cameras'][camera]) {
                 let camid = camera+zone;
