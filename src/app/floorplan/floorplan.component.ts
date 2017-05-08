@@ -6,11 +6,11 @@ import { Observable } from 'rxjs/Observable';
 import { FloorplanService } from '../providers/floorplan.service';
 
 @Component({
-    templateUrl: 'dashboard.component.html',
+    templateUrl: 'Floorplan.component.html',
     providers: [ FloorplanService ]
 })
 
-export class DashboardComponent implements OnInit {
+export class FloorplanComponent implements OnInit {
     public test = 0;
     public z1class = '';
 
@@ -19,7 +19,7 @@ export class DashboardComponent implements OnInit {
     public zoneWifiClass = {'Mala2Zone1': 'zone-null'};
 
     constructor(private fpService: FloorplanService) {
-        
+
     }
 
     updateZones(): void {
@@ -29,9 +29,9 @@ export class DashboardComponent implements OnInit {
         }
     }
 
-    ngOnInit(): void {        
+    ngOnInit(): void {
         this.updateZones();
-        
+
         setInterval(() => {
             this.updateZones();
         }, 5000);

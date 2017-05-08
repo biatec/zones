@@ -8,7 +8,7 @@ import { SimpleLayoutComponent } from './layouts/simple-layout.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'floorplan',
     pathMatch: 'full',
   },
   {
@@ -18,6 +18,10 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
+      {
+        path: 'floorplan',
+        loadChildren: './floorplan/floorplan.module#FloorplanModule'
+      },
       {
         path: 'dashboard',
         loadChildren: './dashboard/dashboard.module#DashboardModule'
