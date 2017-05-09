@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { FloorplanService } from '../providers/floorplan.service';
 
 @Component({
-    templateUrl: 'Floorplan.component.html',
+    templateUrl: 'floorplan.component.html',
     providers: [ FloorplanService ]
 })
 
