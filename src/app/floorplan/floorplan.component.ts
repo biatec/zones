@@ -17,53 +17,56 @@ export class FloorplanComponent implements OnInit {
     private fp = [];
     public zoneClass = {'AtriumZone1': 'zone-null', 'AtriumZone2': 'zone-null', 'AtriumZone3': 'zone-null',
                         'AtriumZone4': 'zone-null', 'MalaZone1': 'zone-null', 'MalaZone2': 'zone-null'};
-    public zoneWifiClass = {'Mala2Zone1': 'zone-null'};
+
+    public zoneWifiClass = {'b827ebbfae09': 'zone-null', 'b827eb27732b': 'zone-null'};
+    public zoneWifiCount = {'b827ebbfae09': '-', 'b827eb27732b': '-'};
 
     public socialChartData2: Array<any> = [
-    {
-      data: [1, 13, 9, 17, 34, 41, 38],
-      label: 'Utilization'
-    }
+        {
+          data: [1, 13, 9, 17, 34, 41, 38],
+          label: 'Utilization'
+        }
     ];
 
     public socialChartLabels: Array<any> = ['7:00', '8:00', '9:00', '10:00', '11:00', '12:00', '13:00',
                                             '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'];
-  public socialChartOptions: any = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      xAxes: [{
-        display: true,
-      }],
-      yAxes: [{
-        display: false,
-      }]
-    },
-    elements: {
-      line: {
-        borderWidth: 2
-      },
-      point: {
-        radius: 0,
-        hitRadius: 10,
-        hoverRadius: 4,
-        hoverBorderWidth: 3,
-      }
-    },
-    legend: {
-      display: false
-    }
-  };
-  public socialChartColours: Array<any> = [
-    {
-      backgroundColor: 'rgba(255,255,255,.2)',
-      borderColor: 'rgba(255,255,255,.55)',
-      pointBorderColor: 'rgba(255,255,255,.99)',
-      pointHoverBackgroundColor: '#fff'
-    }
-  ];
-  public socialChartLegend = false;
-  public socialChartType = 'line';
+    public socialChartOptions: any = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          xAxes: [{
+            display: true,
+          }],
+          yAxes: [{
+            display: false,
+          }]
+        },
+        elements: {
+          line: {
+            borderWidth: 2
+          },
+          point: {
+            radius: 0,
+            hitRadius: 10,
+            hoverRadius: 4,
+            hoverBorderWidth: 3,
+          }
+        },
+        legend: {
+          display: false
+        }
+    };
+
+    public socialChartColours: Array<any> = [
+        {
+          backgroundColor: 'rgba(255,255,255,.2)',
+          borderColor: 'rgba(255,255,255,.55)',
+          pointBorderColor: 'rgba(255,255,255,.99)',
+          pointHoverBackgroundColor: '#fff'
+        }
+    ];
+    public socialChartLegend = false;
+    public socialChartType = 'line';
 
 
     constructor(private fpService: FloorplanService) {
@@ -80,10 +83,18 @@ export class FloorplanComponent implements OnInit {
                 this.zoneClass[camid] = this.fp['cameras'][camera][zone] ? 'zone-occupied' : 'zone-free';
             }
         }
+
+        for(let scanner in this.zoneWifiClass) {
+            this.zoneWifiClass[scanner] = this.fp['scanners'] !== undefined && this.fp['scanners'][scanner] !== undefined ? 'zone-occupied' : 'zone-free';
+        }
+
+        for(let scanner in this.zoneWifiCount) {
+            this.zoneWifiCount[scanner] = this.fp['scanners'] !== undefined && this.fp['scanners'][scanner] !== undefined ? this.fp['scanners'][scanner] : 0;
+        }
     }
 
     ngOnInit(): void {
-        this.updateZones();
+        this.fpService.getZones().subscribe(responseFP => this.fp = responseFP);
 
         setInterval(() => {
             this.updateZones();

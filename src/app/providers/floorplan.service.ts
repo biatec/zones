@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 export class FloorplanService {
     constructor(private http: Http) {}
     
-    private url:string = 'http://10.202.1.10:1880/occupancy/status';
+    private url:string = 'http://10.202.1.10:1880/occupancy/status?rssi=45&time=7m';
     
     getZones() {
         return this.http.get(this.url).map((response: Response) => response.json());

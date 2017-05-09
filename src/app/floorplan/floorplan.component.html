@@ -9,7 +9,7 @@
                     <div style="position: absolute">
                         <div class="{{zoneClass['MalaZone1']}}" style="width:160px; height:305px; left: 40px; top: 60px;position:absolute;"></div>
                         <div class="{{zoneClass['MalaZone2']}}" style="width:140px; height:305px; left: 200px; top: 60px;position:absolute;"></div>
-                        <div class="{{zoneWifiClass['Mala2Zone1']}}" style="width:300px; height:290px; left: 40px; top: 365px;position:absolute;"></div>
+                        <div class="{{zoneWifiClass['b827ebbfae09']}}" style="width:300px; height:290px; left: 40px; top: 365px;position:absolute;"></div>
                         <div class="{{zoneClass['AtriumZone1']}}" style="width:340px; height:300px; left: 340px; top: 60px; position:absolute;"></div>
                         <div class="{{zoneClass['AtriumZone4']}}" style="width:340px; height:300px; left: 680px; top: 60px;position:absolute;"></div>
                         <div class="{{zoneClass['AtriumZone3']}}" style="width:340px; height:300px; left: 340px; top: 360px;position:absolute;"></div>
@@ -22,24 +22,27 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    <strong>Metrics</strong>
+                    <strong>WiFi Device Scanners</strong>
                 </div>
                 <div class="card-block">
-                    <div class="card card-inverse card-primary">
-                        <div class="card-block pb-0">
-                          <h4 class="mb-0">Meeting room</h4>
-                          <p>Utilization</p>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="card card-inverse card-primary">
+                                <div class="card-block">
+                                    <h4 class="mb-5">Meeting room</h4>
+                                    <div class="h4 mb-0">{{zoneWifiCount['b827ebbfae09']}}</div>
+                                    <small class="text-muted text-uppercase font-weight-bold">Proximity Devices</small>
+                                </div>
+                            </div>
                         </div>
-                        <div class="chart-wrapper px-3" style="height:70px;">
-                          <canvas baseChart class="chart"
-                          [datasets]="socialChartData2"
-                          [labels]="socialChartLabels"
-                          [options]="socialChartOptions"
-                          [colors]="socialChartColours"
-                          [legend]="socialChartLegend"
-                          [chartType]="socialChartType"
-                          (chartHover)="chartHovered($event)"
-                          (chartClick)="chartClicked($event)"></canvas>
+                        <div class="col-sm-6 col-md-6">
+                            <div class="card card-inverse card-primary">
+                                <div class="card-block">
+                                    <h4 class="mb-5">Atrium</h4>
+                                    <div class="h4 mb-0">{{zoneWifiCount['b827eb27732b']}}</div>
+                                    <small class="text-muted text-uppercase font-weight-bold">Proximity Devices</small>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
