@@ -7,13 +7,13 @@
                 </div>
                 <div class="card-block">
                     <div style="position: absolute">
-                        <div class="{{zoneClass['AtriumZone1']}}" style="width:340px; height:300px; left: 40px; top: 40px; position:absolute;"></div>
-                        <div class="{{zoneClass['AtriumZone2']}}" style="width:340px; height:300px; left: 380px; top: 40px;position:absolute;"></div>
-                        <div class="{{zoneClass['AtriumZone3']}}" style="width:340px; height:300px; left: 40px; top: 340px;position:absolute;"></div>
-                        <div class="{{zoneClass['AtriumZone4']}}" style="width:340px; height:300px; left: 380px; top: 340px;position:absolute;"></div>
-                        <div class="{{zoneWifiClass['Mala2Zone1']}}" style="width:300px; height:310px; left: 720px; top: 40px;position:absolute;"></div>
-                        <div class="{{zoneClass['MalaZone1']}}" style="width:165px; height:290px; left: 720px; top: 350px;position:absolute;"></div>
-                        <div class="{{zoneClass['MalaZone2']}}" style="width:135px; height:290px; left: 885px; top: 350px;position:absolute;"></div>
+                        <div class="{{zoneClass['MalaZone1']}}" style="width:160px; height:305px; left: 40px; top: 60px;position:absolute;"></div>
+                        <div class="{{zoneClass['MalaZone2']}}" style="width:140px; height:305px; left: 200px; top: 60px;position:absolute;"></div>
+                        <div class="{{zoneWifiClass['Mala2Zone1']}}" style="width:300px; height:290px; left: 40px; top: 365px;position:absolute;"></div>
+                        <div class="{{zoneClass['AtriumZone1']}}" style="width:340px; height:300px; left: 340px; top: 60px; position:absolute;"></div>
+                        <div class="{{zoneClass['AtriumZone4']}}" style="width:340px; height:300px; left: 680px; top: 60px;position:absolute;"></div>
+                        <div class="{{zoneClass['AtriumZone3']}}" style="width:340px; height:300px; left: 340px; top: 360px;position:absolute;"></div>
+                        <div class="{{zoneClass['AtriumZone2']}}" style="width:340px; height:300px; left: 680px; top: 360px;position:absolute;"></div>
                     </div>
                     <img src="src/img/floorplan.svg" width="100%" style="position: relative" />
                 </div>
@@ -25,6 +25,23 @@
                     <strong>Metrics</strong>
                 </div>
                 <div class="card-block">
+                    <div class="card card-inverse card-primary">
+                        <div class="card-block pb-0">
+                          <h4 class="mb-0">Meeting room</h4>
+                          <p>Utilization</p>
+                        </div>
+                        <div class="chart-wrapper px-3" style="height:70px;">
+                          <canvas baseChart class="chart"
+                          [datasets]="socialChartData2"
+                          [labels]="socialChartLabels"
+                          [options]="socialChartOptions"
+                          [colors]="socialChartColours"
+                          [legend]="socialChartLegend"
+                          [chartType]="socialChartType"
+                          (chartHover)="chartHovered($event)"
+                          (chartClick)="chartClicked($event)"></canvas>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
